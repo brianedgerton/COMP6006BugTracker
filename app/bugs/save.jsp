@@ -5,42 +5,70 @@ This file will not render any HTML, it will only redirect to existing pages.
 
 <%@page import="java.io.*,org.w3c.dom.*,javax.xml.parsers.*,javax.xml.transform.*, javax.xml.transform.dom.*,javax.xml.transform.stream.*"%>
 <%!
-	public void createXmlTree(Document doc,String title,String priority,String project,String owner,String description) throws Exception {
-		System.out.println(title);
-		System.out.println(priority);
-		System.out.println(project);
-		System.out.println(owner);
-		System.out.println(description);
+
+	public void createXmlTree(String title,String priority,String project,String owner,String description) throws Exception {
+		//System.out.println(title);
+		//System.out.println(priority);
+		//System.out.println(project);
+		//System.out.println(owner);
+		//System.out.println(description);
+
+		Element root; 
+		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance(); 
+		DocumentBuilder docBuilder = builderFactory.newDocumentBuilder(); 
+		Document doc = docBuilder.newDocument(); 
+		File file = new File("bugs.xml"); 
+		if (file.exists()) 
+		{ 
+			//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+			//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder(); 
+			doc = docBuilder.parse(file); 
+			root = doc.getDocumentElement(); 
+			String sr = root.getNodeName(); 
+			//root = node.getNodeName(); 
+		} 
+		else 
+		{ 
+			root = doc.createElement("bugs"); 
+			doc.appendChild(root); 
+		} 
+
+		//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+		//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
+		//Document doc = docBuilder.newDocument();
 		
-		Element root = doc.createElement("bug");
-		doc.appendChild(root);
+		//Element root = doc.createElement("bug");
+		//doc.appendChild(root);
+		
+		Element child = doc.createElement("bug");
+		root.appendChild(child);
 		
 		Element child1 = doc.createElement("title");
-		root.appendChild(child1);
+		child.appendChild(child1);
 
 		Text text1 = doc.createTextNode(title);
 		child1.appendChild(text1);
 
 		Element child2 = doc.createElement("priority");
-		root.appendChild(child2);
+		child.appendChild(child2);
 
 		Text text2 = doc.createTextNode(priority);
 		child2.appendChild(text2);
 
 		Element child3 = doc.createElement("project");
-		root.appendChild(child3);
+		child.appendChild(child3);
 
 		Text text3 = doc.createTextNode(project);
 		child3.appendChild(text3);
 
 		Element child4 = doc.createElement("owner");
-		root.appendChild(child4);
+		child.appendChild(child4);
 
 		Text text4 = doc.createTextNode(owner);
 		child4.appendChild(text4);
 		
 		Element child5 = doc.createElement("description");
-		root.appendChild(child5);
+		child.appendChild(child5);
 
 		Text text5 = doc.createTextNode(description);
 		child5.appendChild(text5);
@@ -58,13 +86,14 @@ This file will not render any HTML, it will only redirect to existing pages.
 		
 		System.out.println(xmlString);
 
-		//FileWriter file = new FileWriter(application.getRealPath("bugs.xml"), true);
-		//BufferedWriter bw = new BufferedWriter(file); 
-		//File file = new File("localhost:8080/COMP6006BugTracker/app/xml/bugs.xml");
-		//BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-		//bw.write(xmlString);
-		//bw.flush();
-		//bw.close();
+		//File file = new File("localhost:8080/COMP6006BugTracker/app/xml/bugs.xml");z
+		//File file = new File("bugs.xml");
+		FileWriter fw = new FileWriter(file,false);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(xmlString);
+		bw.flush();
+		bw.close();
+		
 	}
 %>
 	
@@ -75,10 +104,11 @@ This file will not render any HTML, it will only redirect to existing pages.
 	String assignto=request.getParameter("owner");
 	String description=request.getParameter("description");
 	
-	DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
-	Document doc = docBuilder.newDocument();
-	createXmlTree(doc,title,priority,project,assignto,description);
+	//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+	//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
+	//Document doc = docBuilder.newDocument();
+	//createXmlTree(doc,title,priority,project,assignto,description);
+	createXmlTree(title,priority,project,assignto,description);
 %>
 
 <jsp:include page="../partials/header.jsp">

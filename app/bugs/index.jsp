@@ -1,68 +1,69 @@
-<%-- This file should list bugs. --%>
+<%@page import="org.w3c.dom.*, javax.xml.parsers.*, java.io.*" %>
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bugs" />
 </jsp:include>
 
+
     <h2>Bug List</h2>
     
-    <p>We'll display a list of submitted bugs here.</p>
+<html>
+	<head><title>Bug List</title></head>
+	<body>  
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Priority</th>
+					<th>Project</th>
+					<th>Owner</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<%
+			  DocumentBuilderFactory docFactory = 
+			  DocumentBuilderFactory.newInstance();
+			  DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			  File file = new File("bugs.xml");
+			  if(file.exists()){
+				Document doc = docBuilder.parse(file);
 
-    <table class="table table-striped table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Priority</th>
-                <th>Assigned To</th>
-                <th>Date</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td><a href="/COMP6006BugTracker/app/bugs/view.jsp?id=1">Something's not working</a></td>
-                <td><span class="label label-warning">Medium</span></td>
-                <td>John Smith</td>
-                <td>Oct 3, 2012</td>
-                <td class="text-success">In queue</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="/COMP6006BugTracker/app/bugs/view.jsp?id=1">Button Broken</a></td>
-                <td><span class="label label-important">Critical</span></td>
-                <td>Sam Beam</td>
-                <td>Oct 7, 2012</td>
-                <td class="text-success">Awaiting Feedback</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><a href="/COMP6006BugTracker/app/bugs/view.jsp?id=1">No emails are being sent</a></td>
-                <td><span class="label label-warning">Medium</span></td>
-                <td>John Smit</td>
-                <td>Oct 4, 2012</td>
-                <td class="text-success">In queue</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><a href="/COMP6006BugTracker/app/bugs/view.jsp?id=1">Getting error message</a></td>
-                <td><span class="label">Low</span></td>
-                <td>Jimmy Paige</td>
-                <td>Sept 9, 2012</td>
-                <td class="text-success">In process</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><a href="/COMP6006BugTracker/app/bugs/view.jsp?id=1">System error</a></td>
-                <td><span class="label label-important">Critical</span></td>
-                <td>Dave Thomas</td>
-                <td>Oct 14, 2012</td>
-                <td class="text-success">In queue</td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
-        <a href="/COMP6006BugTracker/app/bugs/new.jsp" class="btn btn-primary btn-large">Add New Bug</a>
-    </p>
+			%>
+			<%!
+			  public boolean isTextNode(Node n){
+			  return n.getNodeName().equals("#text");
+			  }
+			%>
+			<%
+			Element  element = doc.getDocumentElement(); 
+			NodeList personNodes = element.getChildNodes(); 
+			for (int i=0; i<personNodes.getLength(); i++){
+			Node emp = personNodes.item(i);
+			if (isTextNode(emp))
+			continue;
+			NodeList NameDOBCity = emp.getChildNodes();
+			%>
 
-<jsp:include page="../partials/footer.jsp" />
+			<tbody>
+				<tr>
+					<%
+					for (int j=0; j<NameDOBCity.getLength(); j++ ){
+					Node node = NameDOBCity.item(j);
+					if ( isTextNode(node)) 
+					continue;
+					%>
+					<td><%= node.getFirstChild().getNodeValue() %></td>
+					<%
+					} 
+					%>
+				</tr>
+			</tbody>
+			<%
+			}}
+			%>
+		</table>
+		<p class="text-right">
+		<a href="/COMP6006BugTracker/app/bugs/new.jsp" class="btn btn-primary btn-large">Add New Bug</a>
+		</p>
+	</body>
+</html>
+<jsp:include page="../partials/footer.jsp" /> 

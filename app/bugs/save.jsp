@@ -139,14 +139,9 @@ This file will not render any HTML, it will only redirect to existing pages.
 						<td><%=project %></td>
 					</tr>
 					<tr>
-						<td>project</td>
+						<td>Owner</td>
 						<td>:</td>
-						<td><%=project %></td>
-					</tr>
-					<tr>
-						<td>project</td>
-						<td>:</td>
-						<td><%=project%></td>
+						<td><%=assignto %></td>
 					</tr>
 					<tr>
 						<td>Description</td>

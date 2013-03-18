@@ -3,10 +3,10 @@ Check for an ID in the POST request and load the existing bug to edit if present
 This file will not render any HTML, it will only redirect to existing pages.
 --%> 
 
-<%@page import="java.io.*,org.w3c.dom.*,javax.xml.parsers.*,javax.xml.transform.*, javax.xml.transform.dom.*,javax.xml.transform.stream.*"%>
+<%@page import="java.io.*,org.w3c.dom.*,javax.xml.parsers.*,javax.xml.transform.*, javax.xml.transform.dom.*,javax.xml.transform.stream.*,java.util.*,java.Text.*"%>
 <%!
 
-	public void createXmlTree(String title,String priority,String project,String owner,String description) throws Exception {
+	public void createXmlTree(String createdon,String title,String priority,String project,String owner,String description) throws Exception {
 		//System.out.println(title);
 		//System.out.println(priority);
 		//System.out.println(project);
@@ -40,38 +40,54 @@ This file will not render any HTML, it will only redirect to existing pages.
 		//Element root = doc.createElement("bug");
 		//doc.appendChild(root);
 		
-		Element child = doc.createElement("bug");
-		root.appendChild(child);
+		Element bugChild = doc.createElement("bug");
+		root.appendChild(bugChild);
+		
+		Element child0 = doc.createElement("createdon");
+		bugChild.appendChild(child0);
+		
+		Text text0 = doc.createTextNode(createdon);
+		child0.appendChild(text0);
 		
 		Element child1 = doc.createElement("title");
-		child.appendChild(child1);
+		bugChild.appendChild(child1);
 
 		Text text1 = doc.createTextNode(title);
 		child1.appendChild(text1);
 
 		Element child2 = doc.createElement("priority");
-		child.appendChild(child2);
+		bugChild.appendChild(child2);
 
 		Text text2 = doc.createTextNode(priority);
 		child2.appendChild(text2);
 
 		Element child3 = doc.createElement("project");
-		child.appendChild(child3);
+		bugChild.appendChild(child3);
 
 		Text text3 = doc.createTextNode(project);
 		child3.appendChild(text3);
 
 		Element child4 = doc.createElement("owner");
-		child.appendChild(child4);
+		bugChild.appendChild(child4);
 
 		Text text4 = doc.createTextNode(owner);
 		child4.appendChild(text4);
 		
 		Element child5 = doc.createElement("description");
-		child.appendChild(child5);
+		bugChild.appendChild(child5);
 
 		Text text5 = doc.createTextNode(description);
 		child5.appendChild(text5);
+		
+		
+		/*
+		Element child6 = doc.createElement("createdon");
+		child.appendChild(child6);
+		
+		Text text6 = doc.createTextNode(description);
+		child6.appendChild(dateFormat.format(date));
+		*/
+
 
 		TransformerFactory factory = TransformerFactory.newInstance();
 		Transformer transformer = factory.newTransformer();
@@ -104,11 +120,18 @@ This file will not render any HTML, it will only redirect to existing pages.
 	String assignto=request.getParameter("owner");
 	String description=request.getParameter("description");
 	
+	Date today;  
+	String createdon;  
+	java.text.SimpleDateFormat formatter;  
+	formatter = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss");  
+	today = new Date();  
+	createdon = formatter.format(today);	
+
 	//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 	//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
 	//Document doc = docBuilder.newDocument();
 	//createXmlTree(doc,title,priority,project,assignto,description);
-	createXmlTree(title,priority,project,assignto,description);
+	createXmlTree(createdon,title,priority,project,assignto,description);
 %>
 
 <jsp:include page="../partials/header.jsp">
@@ -120,9 +143,18 @@ This file will not render any HTML, it will only redirect to existing pages.
 			<title>Bug Submitted</title>
 		</head>
 		<body>
+		
+	
+		
+		
 			<p><br>You have submitted</p>
 			<table>
 				<tbody>
+					<tr>
+						<td>Created On</td>
+						<td>:</td>
+						<td><%=createdon %></td>
+					</tr>
 					<tr>
 						<td>Title</td>
 						<td>:</td>

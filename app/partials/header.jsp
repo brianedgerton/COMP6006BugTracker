@@ -29,7 +29,7 @@
                 <div class="span3">
                     <ul class="nav nav-list affix sidenav">
                         <li><a href="/COMP6006BugTracker/app"><i class="icon-chevron-right"></i> Home</a></li>
-                        <li><a href="/COMP6006BugTracker/app/bugs/index.jsp"><i class="icon-chevron-right"></i> Tracker</a></li>
+                        <li><a href="/COMP6006BugTracker/app/bugs/list.jsp"><i class="icon-chevron-right"></i> Tracker</a></li>
                         <li><a href="/COMP6006BugTracker/app/bugs/new.jsp"><i class="icon-chevron-right"></i> Submit Bug</a></li>
                     </ul>
                 </div>

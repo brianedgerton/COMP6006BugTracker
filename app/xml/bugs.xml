@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bugs>
+<bug>
+<bugid>BID-130322142425</bugid>
+<createdon>03/22/2013 14:24:25</createdon>
+<title>Testing ID and file path</title>
+<priority>High</priority>
+<project>BugTracker</project>
+<owner>Sam Beam</owner>
+<description>Testing</description>
+</bug>
+</bugs>

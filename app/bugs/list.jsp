@@ -12,6 +12,7 @@
 		<table class="table table-striped table-hover table-bordered">
 			<thead>
 				<tr>
+					<th>Bug ID</th>
 					<th>Created</th>
 					<th>Title</th>
 					<th>Priority</th>
@@ -24,7 +25,7 @@
 			  DocumentBuilderFactory docFactory = 
 			  DocumentBuilderFactory.newInstance();
 			  DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			  File file = new File("bugs.xml");
+			  File file = new File(getServletContext().getRealPath("app/xml/bugs.xml"));
 			  if(file.exists()){
 				Document doc = docBuilder.parse(file);
 

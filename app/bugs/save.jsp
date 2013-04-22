@@ -212,4 +212,3 @@ This file will not render any HTML, it will only redirect to existing pages.
 		</body>
 	</html>
 <jsp:include page="../partials/footer.jsp" /> 
-

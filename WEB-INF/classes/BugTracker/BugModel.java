@@ -22,7 +22,7 @@ public class BugModel extends XMLModel {
                     continue;
                 }
                 
-                bugArray[i] = new Bug( bug );
+                bugArray[i] = new Bug().fromXML( bug );
             }
             return bugArray;
         } catch ( Exception e ) {
@@ -43,7 +43,7 @@ public class BugModel extends XMLModel {
                 if (isTextNode(bug)) {
                     continue;
                 }
-                Bug bugObj = new Bug( bug );
+                Bug bugObj = new Bug().fromXML( bug );
                 if ( bugObj.bugid.equals( id ) ) {
                     return bugObj;
                 }

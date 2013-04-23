@@ -5,7 +5,6 @@
     String xmlDir = getServletContext().getRealPath( "app/xml" );
     BugModel bugModel = new BugModel( xmlDir );
     Bug bug = bugModel.getById( request.getParameter( "id" ) );
-    System.out.println(bug);
 
     Map priorityOptions = new LinkedHashMap();
     priorityOptions.put( "Low", "Low" );
@@ -23,7 +22,6 @@
 
     String assignToSelect = FormHelper.selectBox( "owner", assignToOptions, bug.owner );
 
-    bug.save();
 
 %>
 <jsp:include page="../partials/header.jsp">
@@ -65,7 +63,8 @@
             </div>
             <button type="submit" class="btn">Submit</button>
         </fieldset>
-        <input type="hidden" name="id" value="<%= bug.bugid %>" />
+        <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
+        <input type="hidden" name="createdon" value="<%= bug.createdon %>" />
     </form>
 
 <jsp:include page="../partials/footer.jsp" />

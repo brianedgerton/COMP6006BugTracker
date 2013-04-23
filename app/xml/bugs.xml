@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <bugs>
+
 <bug>
-<bugid>BID-130322142424</bugid>
-<createdon>03/22/2013 14:24:25</createdon>
-<title>Testing ID and file path</title>
+<bugid>BID-1366690714</bugid>
+<createdon>2013-04-23 00:18:34</createdon>
+<title>New Bug</title>
 <priority>High</priority>
-<project>BugTracker</project>
-<owner>Jimmy Paige</owner>
-<description>Testing</description>
+<project/>
+<owner>Dave Thomas</owner>
+<description/>
 </bug>
 </bugs>

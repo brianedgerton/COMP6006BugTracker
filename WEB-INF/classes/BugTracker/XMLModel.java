@@ -3,6 +3,10 @@ import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import java.io.*;
 import java.util.ArrayList;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+import java.util.*;
 
 abstract class XMLModel {
 
@@ -17,9 +21,7 @@ abstract class XMLModel {
         return n.getNodeName().equals("#text");
     }
 
-    protected Document readFile() 
-        throws RuntimeException, ParserConfigurationException, org.xml.sax.SAXException, java.io.IOException
-    {
+    public Document readFile() throws Exception {
         if ( DOC == null ) {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -37,45 +39,38 @@ abstract class XMLModel {
         return DOC;
     }
 
-    // public void writeFile( String path, NodeList data ) {
-    //     Element root; 
-    //     DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance(); 
-    //     DocumentBuilder docBuilder = builderFactory.newDocumentBuilder(); 
-    //     Document doc = docBuilder.newDocument(); 
-    //     File file = new File( PATH ); 
-    //     if (file.exists()) 
-    //     { 
-    //         doc = docBuilder.parse(file); 
-    //         root = doc.getDocumentElement(); 
-    //         String sr = root.getNodeName(); 
-    //     } 
-    //     else 
-    //     { 
-    //         root = doc.createElement("users"); 
-    //         doc.appendChild(root); 
-    //     }
+    public void save( XMLEntity entity ) throws Exception {
+        Document doc = null;
+        try {
+            doc = this.readFile();
+        } catch( Exception e ) {
 
-
-    //     TransformerFactory factory = TransformerFactory.newInstance();
-    //     Transformer transformer = factory.newTransformer();
-
-    //     transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        }
         
-    //     StringWriter sw = new StringWriter();
-    //     StreamResult result = new StreamResult(sw);
-    //     DOMSource source = new DOMSource(doc);
-    //     transformer.transform(source, result);
-    //     String xmlString = sw.toString();
+        Element root = doc.getDocumentElement();
+
+        doc = entity.createXML( doc, root );
+
+        TransformerFactory factory = TransformerFactory.newInstance();
+        Transformer transformer = factory.newTransformer();
+
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         
-    //     System.out.println(xmlString);
+        StringWriter sw = new StringWriter();
+        StreamResult result = new StreamResult(sw);
+        DOMSource source = new DOMSource(doc);
+        transformer.transform(source, result);
+        String xmlString = sw.toString();
 
-    //     FileWriter fw = new FileWriter(file,false);
-    //     BufferedWriter bw = new BufferedWriter(fw);
-    //     bw.write(xmlString);
-    //     bw.flush();
-    //     bw.close();
+        File file = new File( PATH );
 
-    // }
+        FileWriter fw = new FileWriter(file,false);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(xmlString);
+        bw.flush();
+        bw.close();
+
+    }
 
     abstract XMLEntity[] getList();
     abstract XMLEntity getById( String id );

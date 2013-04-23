@@ -24,7 +24,6 @@
 					<th>Priority</th>
 					<th>Project</th>
 					<th>Owner</th>
-					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,7 +39,6 @@
 					<td><%= bug.priority %></td>
 					<td><%= bug.project %></td>
 					<td><%= bug.owner %></td>
-					<td><%= bug.description %></td>
 				</tr>
 			<%
 			}

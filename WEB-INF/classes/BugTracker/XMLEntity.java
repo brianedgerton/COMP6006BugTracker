@@ -7,16 +7,6 @@ import java.lang.reflect.*;
 
 abstract class XMLEntity {
 
-    public XMLEntity save() {
-        Field[] fields = this.getClass().getFields();
-
-        // for( Field f : fields ) {
-        //     String name = f.getName();
-        //     Object val = f.get( this );
-        //     //System.out.println( f.get(this) );
-        // }
-
-        return this;
-    }
+    abstract Document createXML( Document doc, Element root );
 
 }

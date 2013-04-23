@@ -21,9 +21,8 @@
     assignToOptions.put( "Dave Thomas", "Dave Thomas" );
 
     String assignToSelect = FormHelper.selectBox( "owner", assignToOptions, bug.owner );
-
-
 %>
+
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bugs::Edit" />
 </jsp:include>
@@ -62,6 +61,7 @@
                 </div>
             </div>
             <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn">Close</button>
         </fieldset>
         <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
         <input type="hidden" name="createdon" value="<%= bug.createdon %>" />

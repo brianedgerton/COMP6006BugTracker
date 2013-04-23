@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <bugs>
 
+
 <bug>
-<bugid>BID-1366690714</bugid>
-<createdon>2013-04-23 00:18:34</createdon>
-<title>New Bug</title>
-<priority>High</priority>
-<project/>
-<owner>Dave Thomas</owner>
-<description/>
+<bugid>130423004620</bugid>
+<createdon>2013-04-23 00:46:20</createdon>
+<modifiedon>2013-04-23 00:47:11</modifiedon>
+<title>ModifiedOnFeature</title>
+<priority>Low</priority>
+<project>Semester Project</project>
+<owner>Sam Beam</owner>
+<description>Original Message!&#13;
+Modified Message!</description>
 </bug>
 </bugs>

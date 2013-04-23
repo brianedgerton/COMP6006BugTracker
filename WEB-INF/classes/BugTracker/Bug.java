@@ -6,6 +6,7 @@ import java.io.*;
 public class Bug extends XMLEntity {
     public String bugid;
     public String createdon;
+    public String modifiedon;
     public String title;
     public String priority;
     public String project;
@@ -20,6 +21,7 @@ public class Bug extends XMLEntity {
         Element el = (Element)xml;
         this.bugid = el.getElementsByTagName( "bugid" ).item( 0 ).getTextContent();
         this.createdon = el.getElementsByTagName( "createdon" ).item( 0 ).getTextContent();
+        this.modifiedon = el.getElementsByTagName( "modifiedon" ).item( 0 ).getTextContent();
         this.title = el.getElementsByTagName( "title" ).item( 0 ).getTextContent();
         this.priority = el.getElementsByTagName( "priority" ).item( 0 ).getTextContent();
         this.project = el.getElementsByTagName( "project" ).item( 0 ).getTextContent();
@@ -59,6 +61,12 @@ public class Bug extends XMLEntity {
         
         Text text0 = doc.createTextNode(this.createdon);
         child0.appendChild(text0);
+        
+        Element childModifiedOn = doc.createElement("modifiedon");
+        bugChild.appendChild(childModifiedOn);
+        
+        Text textModifiedOn = doc.createTextNode(this.modifiedon);
+        childModifiedOn.appendChild(textModifiedOn);
         
         Element child1 = doc.createElement("title");
         bugChild.appendChild(child1);

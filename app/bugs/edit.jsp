@@ -66,5 +66,9 @@
         <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
         <input type="hidden" name="createdon" value="<%= bug.createdon %>" />
     </form>
+    
+    <p class="text-right">
+	<a href="/COMP6006BugTracker/app/bugs/new.jsp" class="btn btn-primary btn-large">Close Bug</a>
+	</p>
 
 <jsp:include page="../partials/footer.jsp" />

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <bugs>
 <bug>
-<bugid>BID-130322142424</bugid>
-<createdon>03/22/2013 14:24:25</createdon>
-<title>Testing ID and file path</title>
-<priority>High</priority>
-<project>BugTracker</project>
+<bugid>130422220713</bugid>
+<createdon>04/22/2013 22:07:13</createdon>
+<title>Search Feature</title>
+<priority>Low</priority>
+<project>Semester Project</project>
 <owner>Jimmy Paige</owner>
-<description>Testing</description>
+<description>Wanted to test out the searching feature.</description>
+</bug>
+<bug>
+<bugid>130422220754</bugid>
+<createdon>04/22/2013 22:07:54</createdon>
+<title>Another Bug</title>
+<priority>High</priority>
+<project>Semester Project</project>
+<owner>Sam Beam</owner>
+<description>Just another bug!</description>
 </bug>
 </bugs>

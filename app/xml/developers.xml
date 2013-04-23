@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<developers>
+
+<developer>
+<developerid>0001</developerid>
+<developername>Sam Bean</developername>
+</developer>
+
+<developer>
+<developerid>0002</developerid>
+<developername>John Smith</developername>
+</developer>
+
+<developer>
+<developerid>0003</developerid>
+<developername>Jimmy Paige</developername>
+</developer>
+
+<developer>
+<developerid>0004</developerid>
+<developername>Dave Thomas</developername>
+</developer>
+
+</developers>

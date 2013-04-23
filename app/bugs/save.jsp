@@ -7,39 +7,24 @@ This file will not render any HTML, it will only redirect to existing pages.
 <%!
 
 	public void createXmlTree(String bugid,String createdon,String title,String priority,String project,String owner,String description) throws Exception {
-		//System.out.println(title);
-		//System.out.println(priority);
-		//System.out.println(project);
-		//System.out.println(owner);
-		//System.out.println(description);
 
 		Element root; 
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance(); 
 		DocumentBuilder docBuilder = builderFactory.newDocumentBuilder(); 
 		Document doc = docBuilder.newDocument(); 
 		File file = new File(getServletContext().getRealPath("app/xml/bugs.xml")); 
-		//System.out.println(getServletContext().getRealPath("app/xml/bugs.xml"));
+
 		if (file.exists()) 
 		{ 
-			//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-			//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder(); 
 			doc = docBuilder.parse(file); 
 			root = doc.getDocumentElement(); 
-			String sr = root.getNodeName(); 
-			//root = node.getNodeName(); 
+			String sr = root.getNodeName();  
 		} 
 		else 
 		{ 
 			root = doc.createElement("bugs"); 
 			doc.appendChild(root); 
 		} 
-
-		//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-		//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
-		//Document doc = docBuilder.newDocument();
-		
-		//Element root = doc.createElement("bug");
-		//doc.appendChild(root);
 		
 		Element bugChild = doc.createElement("bug");
 		root.appendChild(bugChild);
@@ -85,16 +70,6 @@ This file will not render any HTML, it will only redirect to existing pages.
 
 		Text text5 = doc.createTextNode(description);
 		child5.appendChild(text5);
-		
-		
-		/*
-		Element child6 = doc.createElement("createdon");
-		child.appendChild(child6);
-		
-		Text text6 = doc.createTextNode(description);
-		child6.appendChild(dateFormat.format(date));
-		*/
-
 
 		TransformerFactory factory = TransformerFactory.newInstance();
 		Transformer transformer = factory.newTransformer();
@@ -106,11 +81,7 @@ This file will not render any HTML, it will only redirect to existing pages.
 		DOMSource source = new DOMSource(doc);
 		transformer.transform(source, result);
 		String xmlString = sw.toString();
-		
-		System.out.println(xmlString);
 
-		//File file = new File("localhost:8080/COMP6006BugTracker/app/xml/bugs.xml");z
-		//File file = new File("bugs.xml");
 		FileWriter fw = new FileWriter(file,false);
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.write(xmlString);
@@ -128,7 +99,7 @@ This file will not render any HTML, it will only redirect to existing pages.
 	String description=request.getParameter("description");
 	
 	Date today;  
-	String createdon;  
+	String createdon, bugid;  
 	java.text.SimpleDateFormat formatter;  
 	formatter = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss");  
 	today = new Date();  
@@ -136,29 +107,21 @@ This file will not render any HTML, it will only redirect to existing pages.
 	
 	formatter =  new java.text.SimpleDateFormat("yyMMddHHmmss");
 	Date date = new Date();
-	String bugid = "BID-";
-	bugid = bugid + formatter.format(date);
+	bugid = formatter.format(date);
 
-	//DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-	//DocumentBuilder docBuilder = builderFactory.newDocumentBuilder();
-	//Document doc = docBuilder.newDocument();
-	//createXmlTree(doc,title,priority,project,assignto,description);
 	createXmlTree(bugid,createdon,title,priority,project,assignto,description);
 %>
 
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bug Submitted" />
 </jsp:include>
+
     <h2>Bug Submitted</h2>
 	<html>
 		<head>
 			<title>Bug Submitted</title>
 		</head>
 		<body>
-		
-	
-		
-		
 			<p><br>You have submitted</p>
 			<table>
 				<tbody>

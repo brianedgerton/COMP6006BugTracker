@@ -2,15 +2,29 @@
 <bugs>
 
 
+
 <bug>
 <bugid>130423004620</bugid>
 <createdon>2013-04-23 00:46:20</createdon>
-<modifiedon>2013-04-23 00:47:11</modifiedon>
+<modifiedon>2013-04-23 09:47:15</modifiedon>
 <title>ModifiedOnFeature</title>
+<priority>High</priority>
+<project>Semester Project</project>
+<owner>John Smith</owner>
+<description>Original Message!&#13;
+Modified Message!&#13;
+Today's modification.</description>
+</bug>
+
+<bug>
+<bugid>130423094820</bugid>
+<createdon>2013/04/23 09:48:20</createdon>
+<modifiedon>2013/04/23 09:49:21</modifiedon>
+<title>DateFormat</title>
 <priority>Low</priority>
 <project>Semester Project</project>
 <owner>Sam Beam</owner>
-<description>Original Message!&#13;
-Modified Message!</description>
+<description>Changed date format.&#13;
+Modified.</description>
 </bug>
 </bugs>

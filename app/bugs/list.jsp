@@ -19,6 +19,9 @@
 <html>
 	<head><title>Bug List</title></head>
 	<body>  
+		<p> 
+		(Click on Bug ID to edit)
+		</p>
 		<table class="table table-striped table-hover table-bordered">
 			<thead>
 				<tr>

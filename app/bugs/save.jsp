@@ -12,7 +12,7 @@ This file will not render any HTML, it will only redirect to existing pages.
 		String createdon = request.getParameter("createdon");
 		System.out.println(createdon);
 		java.text.SimpleDateFormat formatter;  
-		formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		formatter = new java.text.SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
 		Date today = new Date(); 
 	        
 		if ( createdon.equals("")) {

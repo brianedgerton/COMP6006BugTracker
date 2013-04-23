@@ -60,15 +60,11 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn">Submit</button>
-            <button type="submit" class="btn">Close</button>
+            <button type="submit" class="btn">Submit Changes</button>
+            
         </fieldset>
         <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
         <input type="hidden" name="createdon" value="<%= bug.createdon %>" />
     </form>
-    
-    <p class="text-right">
-	<a href="/COMP6006BugTracker/app/bugs/new.jsp" class="btn btn-primary btn-large">Close Bug</a>
-	</p>
 
 <jsp:include page="../partials/footer.jsp" />

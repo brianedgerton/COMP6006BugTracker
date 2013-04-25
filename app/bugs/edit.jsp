@@ -61,7 +61,7 @@
                 </div>
             </div>
             <button type="submit" class="btn">Submit Changes</button>
-            
+            <button style="color:red" type="submit" class="btn">Close Bug</button>
         </fieldset>
         <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
         <input type="hidden" name="createdon" value="<%= bug.createdon %>" />

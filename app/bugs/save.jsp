@@ -11,28 +11,36 @@ This file will not render any HTML, it will only redirect to existing pages.
 
 		String createdon = request.getParameter("createdon");
 		System.out.println(createdon);
+		java.text.SimpleDateFormat formatter;  
+		formatter = new java.text.SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
+		Date today = new Date(); 
+	        
 		if ( createdon.equals("")) {
-			java.text.SimpleDateFormat formatter;  
-	        formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
-	        Date today = new Date();  
 			createdon = formatter.format(today);
 		}
+		
 		bug.createdon = createdon;
+		bug.modifiedon = formatter.format(today);
 		bug.title = request.getParameter( "title" );
 		bug.priority = request.getParameter( "priority" );
 		bug.project = request.getParameter( "project" );
 		bug.owner = request.getParameter( "owner" );
 		bug.description = request.getParameter( "description" );
-
 		bug.bugid = request.getParameter( "bugid" );
+		
 		if ( bug.bugid.equals("") ) {
-			long timestamp = System.currentTimeMillis()/1000;
-			bug.bugid = "BID-"+timestamp;
+			java.text.SimpleDateFormat formatterID;  
+	        formatterID = new java.text.SimpleDateFormat("yyMMddHHmmss");  
+	        Date todayID = new Date();  
+			String timestamp = formatterID.format(todayID);
+			//Long timestamp = System.currentTimeMillis()/1000;
+			//bug.bugid = "BID-"+timestamp;
+			bug.bugid = timestamp;
 		}
 
 		bugModel.save( bug );
 	}
 
-	response.sendRedirect( "/COMP6006BugTracker/app/bugs/");
+	response.sendRedirect( "/COMP6006BugTracker/app/bugs/list.jsp");
 
 %>

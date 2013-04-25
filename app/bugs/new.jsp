@@ -2,8 +2,6 @@
 <%@page import="BugTracker.*, org.w3c.dom.*, javax.xml.parsers.*, java.io.*, java.util.*" %>
 
 <%
-    
-
     Map priorityOptions = new LinkedHashMap();
     priorityOptions.put( "", "-- Select Priority --" );
     priorityOptions.put( "Low", "Low" );
@@ -41,6 +39,7 @@
     String projectSelect = FormHelper.selectBox( "project", projectOptions, null );
 
 %>
+
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bugs::Edit" />
 </jsp:include>

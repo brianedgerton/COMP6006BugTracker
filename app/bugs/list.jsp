@@ -19,11 +19,15 @@
 <html>
 	<head><title>Bug List</title></head>
 	<body>  
+		<p> 
+		(Click on Bug ID to edit)
+		</p>
 		<table class="table table-striped table-hover table-bordered">
 			<thead>
 				<tr>
 					<th>Bug ID</th>
 					<th>Created</th>
+					<th>Modified</th>
 					<th>Title</th>
 					<th>Priority</th>
 					<th>Project</th>
@@ -45,6 +49,7 @@
 				<tr>
 					<td><a href="/COMP6006BugTracker/app/bugs/edit.jsp?id=<%= bug.bugid %>"><%= bug.bugid %></a></td>
 					<td><%= bug.createdon %></td>
+					<td><%= bug.modifiedon %></td>
 					<td><%= bug.title %></td>
 					<td><%= bug.priority %></td>
 					<td><%= bug.project %></td>

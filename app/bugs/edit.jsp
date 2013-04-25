@@ -43,6 +43,7 @@
     String projectSelect = FormHelper.selectBox( "project", projectOptions, bug.project );
 
 %>
+
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bugs::Edit" />
 </jsp:include>
@@ -80,14 +81,11 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn">Submit Changes</button>
+            <button style="color:red" type="submit" class="btn">Close Bug</button>
         </fieldset>
         <input type="hidden" name="bugid" value="<%= bug.bugid %>" />
         <input type="hidden" name="createdon" value="<%= bug.createdon %>" />
     </form>
-    
-    <p class="text-right">
-	<a href="/COMP6006BugTracker/app/bugs/new.jsp" class="btn btn-primary btn-large">Close Bug</a>
-	</p>
 
 <jsp:include page="../partials/footer.jsp" />

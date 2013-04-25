@@ -8,6 +8,8 @@
 	BugModel bugModel = new BugModel( xmlDir );
 	Bug[] bugs = bugModel.getList();
 	
+	DeveloperModel devModel = new DeveloperModel( xmlDir );
+	ProjectModel projModel = new ProjectModel( xmlDir );
 
 %>
 <jsp:include page="../partials/header.jsp">
@@ -32,7 +34,6 @@
 					<th>Priority</th>
 					<th>Project</th>
 					<th>Owner</th>
-					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,6 +42,29 @@
 			for (int i=0; i < bugs.length; i++) {
 				Bug bug = bugs[i];
 				
+				String owner = null;
+				String project = null;
+				Developer dev = null;
+				Project proj = null;
+
+				if ( bug.owner != null ) {
+					dev = devModel.getById( bug.owner );
+					if ( dev != null ) {
+						owner = dev.developername;
+					} else {
+						owner = bug.owner;
+					}
+				}
+
+				if ( bug.project != null ) {
+					proj = projModel.getById( bug.project );
+					if ( proj != null ) {
+						project = proj.projectname;
+					} else {
+						project = bug.project;
+					}
+				}
+
 				System.out.println(bugid != "");
 				
 				if (bugid == null || bugid.equals(bug.bugid)){
@@ -52,9 +76,8 @@
 					<td><%= bug.modifiedon %></td>
 					<td><%= bug.title %></td>
 					<td><%= bug.priority %></td>
-					<td><%= bug.project %></td>
-					<td><%= bug.owner %></td>
-					<td><%= bug.description %></td>
+					<td><%= project %></td>
+					<td><%= owner %></td>
 				</tr>
 			<%
 				}

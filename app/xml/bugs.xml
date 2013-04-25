@@ -3,18 +3,7 @@
 
 
 
-<bug>
-<bugid>130423004620</bugid>
-<createdon>2013-04-23 00:46:20</createdon>
-<modifiedon>2013-04-23 09:47:15</modifiedon>
-<title>ModifiedOnFeature</title>
-<priority>High</priority>
-<project>Semester Project</project>
-<owner>John Smith</owner>
-<description>Original Message!&#13;
-Modified Message!&#13;
-Today's modification.</description>
-</bug>
+
 
 <bug>
 <bugid>130423094820</bugid>
@@ -26,5 +15,28 @@ Today's modification.</description>
 <owner>Sam Beam</owner>
 <description>Changed date format.&#13;
 Modified.</description>
+</bug>
+
+<bug>
+<bugid>130423004620</bugid>
+<createdon>2013-04-23 00:46:20</createdon>
+<modifiedon>2013/04/25 18:28:05</modifiedon>
+<title>ModifiedOnFeature</title>
+<priority>Medium</priority>
+<project>PROJ-0001</project>
+<owner>0002</owner>
+<description>Original Message!&#13;
+Modified Message!&#13;
+Today's modification.</description>
+</bug>
+<bug>
+<bugid>130425183021</bugid>
+<createdon>2013/04/25 18:30:21</createdon>
+<modifiedon>2013/04/25 18:30:21</modifiedon>
+<title>New Bug</title>
+<priority>Critical</priority>
+<project>PROJ-0002</project>
+<owner>0004</owner>
+<description>please work</description>
 </bug>
 </bugs>

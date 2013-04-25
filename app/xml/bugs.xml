@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <bugs>
 
+
+
 <bug>
 <bugid>BID-1366690714</bugid>
 <createdon>2013-04-23 00:18:34</createdon>
 <title>New Bug</title>
 <priority>High</priority>
-<project/>
-<owner>Dave Thomas</owner>
+<project>PROJ-0002</project>
+<owner>0003</owner>
 <description/>
+</bug>
+<bug>
+<bugid>BID-1366928034</bugid>
+<createdon>2013-04-25 18:13:54</createdon>
+<title>Something's Broken</title>
+<priority>Medium</priority>
+<project>PROJ-0004</project>
+<owner>0002</owner>
+<description>Nothing is working for me.</description>
 </bug>
 </bugs>

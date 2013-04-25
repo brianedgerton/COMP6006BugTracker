@@ -5,6 +5,9 @@
 	BugModel bugModel = new BugModel( xmlDir );
 	Bug[] bugs = bugModel.getList();
 
+	DeveloperModel devModel = new DeveloperModel( xmlDir );
+	ProjectModel projModel = new ProjectModel( xmlDir );
+
 %>
 <jsp:include page="../partials/header.jsp">
     <jsp:param name="page_title" value="Bugs" />
@@ -31,14 +34,36 @@
 			
 			for (int i=0; i < bugs.length; i++) {
 				Bug bug = bugs[i];
+				String owner = null;
+				String project = null;
+				Developer dev = null;
+				Project proj = null;
+
+				if ( bug.owner != null ) {
+					dev = devModel.getById( bug.owner );
+					if ( dev != null ) {
+						owner = dev.developername;
+					} else {
+						owner = bug.owner;
+					}
+				}
+
+				if ( bug.project != null ) {
+					proj = projModel.getById( bug.project );
+					if ( proj != null ) {
+						project = proj.projectname;
+					} else {
+						project = bug.project;
+					}
+				}
 			%>
 				<tr>
 					<td><a href="/COMP6006BugTracker/app/bugs/edit.jsp?id=<%= bug.bugid %>"><%= bug.bugid %></a></td>
 					<td><%= bug.createdon %></td>
 					<td><%= bug.title %></td>
 					<td><%= bug.priority %></td>
-					<td><%= bug.project %></td>
-					<td><%= bug.owner %></td>
+					<td><%= project %></td>
+					<td><%= owner %></td>
 				</tr>
 			<%
 			}

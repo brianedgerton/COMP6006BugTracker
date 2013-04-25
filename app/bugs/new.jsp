@@ -5,6 +5,7 @@
     
 
     Map priorityOptions = new LinkedHashMap();
+    priorityOptions.put( "", "-- Select Priority --" );
     priorityOptions.put( "Low", "Low" );
     priorityOptions.put( "Medium", "Medium" );
     priorityOptions.put( "High", "High" );
@@ -12,14 +13,32 @@
 
     String prioritySelect = FormHelper.selectBox( "priority", priorityOptions, null );
 
+    String xmlDir = getServletContext().getRealPath( "app/xml" );
+    DeveloperModel devModel = new DeveloperModel( xmlDir );
+    Developer[] developers = devModel.getList();    
+
     Map assignToOptions = new LinkedHashMap();
-    assignToOptions.put( "Sam Beam", "Sam Beam" );
-    assignToOptions.put( "John Smith", "John Smith" );
-    assignToOptions.put( "Jimmy Paige", "Jimmy Paige" );
-    assignToOptions.put( "Dave Thomas", "Dave Thomas" );
+    assignToOptions.put( "", "-- Select Owner --" );
+    for (int i=0; i < developers.length; i++) {
+        Developer developer = developers[i];
+        assignToOptions.put( developer.developerid, developer.developername );
+    };
 
     String assignToSelect = FormHelper.selectBox( "owner", assignToOptions, null );
 
+
+    ProjectModel projModel = new ProjectModel( xmlDir );
+    Project[] projects = projModel.getList();    
+
+    Map projectOptions = new LinkedHashMap();
+
+    projectOptions.put( "", "-- Select Project --" );
+    for (int i=0; i < projects.length; i++) {
+        Project project = projects[i];
+        projectOptions.put( project.projectid, project.projectname );
+    };
+    
+    String projectSelect = FormHelper.selectBox( "project", projectOptions, null );
 
 %>
 <jsp:include page="../partials/header.jsp">
@@ -45,7 +64,7 @@
                 <div class="row">
                     <div class="span4">
                         <label>Project</label>
-                        <input type="text" name="project"  />
+                        <%= projectSelect %>
                     </div>
                     <div class="span4">
                         <label>Assign To</label>

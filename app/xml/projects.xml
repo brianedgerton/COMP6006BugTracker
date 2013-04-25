@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<projects>
+
+<project>
+<projectid>PROJ-0001</projectid>
+<projectname>MS Office</projectname>
+</project>
+
+<project>
+<projectid>PROJ-0002</projectid>
+<projectname>Adobe Photoshop</projectname>
+</project>
+
+<project>
+<projectid>PROJ-0003</projectid>
+<projectname>Omnigraffle</projectname>
+</project>
+
+<project>
+<projectid>PROJ-0004</projectid>
+<projectname>Sublime Text 2</projectname>
+</project>
+
+</projects>
